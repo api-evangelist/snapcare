@@ -1,0 +1,22 @@
+generated: '2026-08-28'
+method: searched
+source: https://snapcare.com/workforce-technology
+note: >-
+  SnapCare publishes no plan or price list. Booker is sold to healthcare organizations through
+  a sales conversation — the public site markets the platform and routes to contact/demo, with
+  no pricing page, no tier table, and no self-serve sign-up. The clinician side of the
+  marketplace is free to the clinician (SnapCare is paid by the facility). No `Pricing` pointer
+  is wired into apis.yml because there is no pricing page to point at.
+pricing_model: enterprise-contact-sales
+plan_count: 0
+plans: []
+evidence:
+- url: https://snapcare.com/
+  status: 200
+  note: Homepage reachable on the first clean pass; no /pricing route in the site navigation.
+- url: https://snapcare.com/workforce-technology
+  status: 200
+  note: >-
+    Booker product page. Confirmed to exist and be indexed; body could not be read directly
+    because the origin's Fastly bot challenge engaged. Marketing copy recovered through search
+    engine indexing describes capabilities only, no prices.

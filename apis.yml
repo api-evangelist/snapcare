@@ -1,7 +1,16 @@
 aid: snapcare
 name: SnapCare
-description: 'SnapCare is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  SnapCare is an Atlanta-based healthcare workforce company, founded in 2017 as SnapNurse and
+  relaunched under the SnapCare name in 2023, that pairs a national clinician marketplace with
+  Booker, its SaaS workforce platform for hospitals, post-acute facilities, agency suppliers and
+  clinicians. Booker combines predictive scheduling against census and historical demand trends,
+  real-time per-diem shift fulfillment, internal float-pool management, same-day pay, and
+  escalation of unfilled shifts to approved contingent suppliers. SnapCare acquired predictive
+  staffing analytics vendor Medecipher in 2024 and merged with the nurse community connectRN in
+  April 2026, raising a Series A led by Suvretta Capital. SnapCare sells the platform to healthcare
+  organizations rather than to developers; no public developer program, API reference, or
+  machine-readable API contract was found on its public surface.
 url: https://raw.githubusercontent.com/api-evangelist/snapcare/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
@@ -12,6 +21,13 @@ created: '2026-08-28'
 modified: '2026-08-28'
 tags:
 - Company
+- Healthcare
+- Staffing
+- Workforce Management
+- Scheduling
+- Marketplace
+- Human Resources
+- Nursing
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -20,4 +36,45 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://www.hiive.com/securities/snapcare-stock
+  url: https://snapcare.com/
+- type: Blog
+  url: https://snapcare.com/articles
+- type: Support
+  url: https://snapcare.com/contact-us
+- type: TermsOfService
+  url: https://snapcare.com/terms-and-conditions
+- type: PrivacyPolicy
+  url: https://snapcare.com/privacy-policy
+- type: Login
+  url: https://app.snapcare.com/
+- type: LLMsTxt
+  url: llms/snapcare-llms.txt
+- type: DomainSecurity
+  url: security/snapcare-domain-security.yml
+x-enrichment:
+  date: '2026-08-28'
+  status: minimal
+  artifacts_added: 6
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    SnapCare sells Booker as a managed SaaS to healthcare organizations and publishes nothing for
+    developers — no /developers or /api route, api.snapcare.com and docs.snapcare.com are
+    NXDOMAIN, the GitHub org `snapcare` has zero public repositories, and app.snapcare.com (the
+    Booker SPA) returns clean JSON 404s on every /.well-known path rather than any discovery
+    document; a Fastly JavaScript bot challenge on the marketing origin additionally blocked
+    reading the llms.txt SnapCare does serve.
+  evidence:
+  - url: https://api.snapcare.com/openapi.json
+    status: 0
+  - url: https://snapcare.com/.well-known/api-catalog
+    status: 404
+  - url: https://app.snapcare.com/.well-known/agent-card.json
+    status: 404
+  - url: https://api.github.com/orgs/snapcare/repos
+    status: 200
+  - url: https://snapcare.com/llms.txt
+    status: 200
+  checked: '2026-08-28'

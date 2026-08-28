@@ -1,0 +1,76 @@
+generated: '2026-08-28'
+method: probed
+source: live GET probes of /.well-known/* on every SnapCare-controlled host
+note: >-
+  Every probed path missed. No `WellKnown` or `SecurityTxt` pointer is wired into apis.yml,
+  because a pointer asserts that the provider SERVES the surface and SnapCare does not.
+  The snapcare.com origin sits behind a Fastly JavaScript bot challenge that engages after a
+  handful of requests from one client; the statuses recorded below for snapcare.com are from
+  the first clean pass, before the challenge engaged, when the origin was still returning its
+  real Next.js 404 page (11.5KB HTML) for missing paths. app.snapcare.com answers
+  /.well-known/* with an honest 34-byte JSON 404. api.snapcare.com does not resolve.
+hosts:
+- host: snapcare.com
+  note: >-
+    Corporate + marketing site behind Fastly. Statuses captured on the first clean pass
+    (2026-08-28); each returned the site's real 404 page, not a soft-200.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: app.snapcare.com
+  note: >-
+    The Booker web application (Fastly-fronted single-page app). The app shell answers 200 with
+    a 4,068-byte HTML catch-all for every unmatched route, but /.well-known/* is handled
+    correctly and returns a 34-byte JSON 404 — so these are true misses, not SPA false
+    positives.
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+- host: api.connectrn.com
+  note: >-
+    connectRN merged with SnapCare in April 2026; its API host resolves and is live, but every
+    unauthenticated path — including /.well-known/* — returns an 8-byte `NotFound` text/plain
+    response. No anonymous discovery surface.
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+unresolved_hosts:
+- host: api.snapcare.com
+  note: NXDOMAIN — no A/CNAME record.
+- host: developer.snapcare.com
+  note: NXDOMAIN — no A/CNAME record.
+- host: docs.snapcare.com
+  note: NXDOMAIN — no A/CNAME record.

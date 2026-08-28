@@ -1,0 +1,15 @@
+generated: '2026-08-28'
+method: searched
+source: >-
+  SnapCare public web surface + probes of snapcare.com, app.snapcare.com, api.snapcare.com
+  (NXDOMAIN) and api.connectrn.com
+note: >-
+  SnapCare publishes no API documentation, so there are no documented rate limits to record and
+  no live unauthenticated endpoint on which to observe rate-limit response headers. No
+  `RateLimits` pointer is wired into apis.yml: the agent-readiness rate_limit_signal dimension
+  reads that pointer as a claim that the provider signals limits at runtime, and SnapCare makes
+  no such claim. Honest zero.
+limit_count: 0
+limits: []
+response_headers: []
+exhaustion_status: null

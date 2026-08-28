@@ -1,0 +1,35 @@
+generated: '2026-08-28'
+method: searched
+source: >-
+  registry.npmjs.org search + package metadata, pypi.org, api.github.com (orgs/snapcare and
+  repository search), and the SnapCare public web surface
+note: >-
+  No first-party SnapCare client library, SDK, or CLI was found in any public package registry.
+  No `SDKs` or `Packages` pointer is wired into apis.yml: SnapCare publishes no SDK, and a
+  pointer would assert one exists. Recorded as an honest zero.
+package_count: 0
+packages: []
+searched:
+- registry: npm
+  query: snapcare
+  result: >-
+    One hit, `snapcare-chat` — REJECTED. It is a 2017 React live-chat component published by
+    maintainer rrandhawa@snapcare.me (a different domain), repository
+    github.com/mohitgarg/snapcare-chat. Not this company.
+  version_seen: 1.0.1
+  published_seen: '2017-11-24'
+- registry: pypi
+  query: snapcare
+  result: 404 — no package of that name.
+- registry: github
+  query: orgs/snapcare
+  result: >-
+    The GitHub organization `snapcare` exists (created 2025-06-05) but has 0 public
+    repositories, no name, no description, no blog URL and no verified link back to
+    snapcare.com. Ownership is unproven and there is nothing published, so it is NOT wired as
+    a GitHubOrganization pointer.
+- registry: github
+  query: repository search "snapcare"
+  result: >-
+    12 hits, all unrelated student/hobby projects (photo-based symptom checkers, e-commerce
+    demos, elder-care prototypes). None belong to SnapCare the healthcare workforce company.
